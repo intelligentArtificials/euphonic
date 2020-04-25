@@ -1,0 +1,58 @@
+@startuml component
+
+package "thermometer" {
+  component analyzer
+  database stats_db
+  component website
+}
+
+package "text_processor" {
+  component processor
+  component tagger
+}
+
+package "user interface" {
+  cloud AWStranscriber
+  cloud AWSpolly
+  cloud AWSconnect as welcomer
+  component processor
+  component tagger
+}
+
+database "database" {
+    database users
+    database texts
+    database tags
+}
+
+actor user
+component tagger
+component onboarder
+component connector
+component feeder
+
+
+
+user -- welcomer
+welcomer -- onboarder
+welcomer -- AWSpolly
+welcomer -- AWStranscriber
+welcomer -- users
+welcomer -- processor
+welcomer -- feeder
+welcomer -- connector
+feeder -- users
+feeder -- texts
+connector -- users
+onboarder -- users
+onboarder -- texts
+
+processor -- tagger
+processor -- texts
+
+analyzer -- users
+analyzer -- texts
+analyzer -- tags
+analyzer -- stats_db
+website -- stats_db
+@enduml
