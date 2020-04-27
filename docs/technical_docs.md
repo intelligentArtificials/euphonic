@@ -1,5 +1,9 @@
-# euphonic technical docs
-
+# euphonic technical sketch
+ **OUTDATED** 
+ 
+ **This is just the original sketch of a possible architecture. 
+ This has been significantly refined during the hackathon, so the docs here need to be updated**
+ 
 This is a place to keep info relevant to the developer perspective.
 
 ## Use case
